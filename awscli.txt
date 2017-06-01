@@ -1,0 +1,3 @@
+aws ec2 create-security-group --group-name [GROUP-NAME] --description "Academy:Bradley:AWSCLI:0106" --vpc-id [ID-HERE]
+aws ec2 authorize-security-group-ingress --group-name [GROUP-NAME] --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws ec2 delete-security-group --group-name [GROUP-NAME]
