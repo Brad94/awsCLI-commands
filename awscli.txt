@@ -1,3 +1,26 @@
-aws ec2 create-security-group --group-name [GROUP-NAME] --description "Academy:Bradley:AWSCLI:0106" --vpc-id [ID-HERE]
-aws ec2 authorize-security-group-ingress --group-name [GROUP-NAME] --protocol tcp --port 22 --cidr 0.0.0.0/0
-aws ec2 delete-security-group --group-name [GROUP-NAME]
+aws ec2 create-security-group --group-name [GROUP-NAME-HERE] --description "Academy:Bradley:AWSCLI:0106" --vpc-id [ID-HERE]
+
+aws ec2 authorize-security-group-ingress --group-id [SECURITY-GROUP-ID-HERE] --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+aws ec2 run-instances --image-id ami-f1d7c395 --security-group-ids [SECURITY-GROUP-ID-HERE] --count 1 --instance-type t2.micro --key-name [KEYNAME-HERE] --query 'Instances[0].InstanceId' --subnet-id [SUBNET-ID-HERE]
+
+aws ec2 describe-instances --instance-ids [INSTANCE-ID-HERE] --query 'Reservations[0].Instances[0].PublicIpAddress'
+
+aws ec2 terminate-instances --instance-ids [INSTANCE-ID-HERE]
+
+aws ec2 delete-security-group --group-id [GROUP-ID-HERE]
+
+
+
+http://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
+
+
+aws s3api create-bucket --bucket bradsbigbucket --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
+
+aws s3api put-bucket-versioning --bucket bradsbigbucket --versioning-configuration Status=Enabled
+
+aws s3api put-object --bucket bradsbigbucket --key AmazonWebservices_Logo.png --body C:\Users\Administrator\Desktop\AmazonWebservices_Logo.png
+
+aws s3api delete-object --bucket bradsbigbucket  --key AmazonWebservices_Logo.png
+
+aws s3api delete-bucket --bucket bradsbigbucket --region eu-west-2
